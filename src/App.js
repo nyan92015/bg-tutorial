@@ -7,7 +7,7 @@ import { TicTacToeBoard } from './Board';
 const TicTacToeClient = Client({
   game: TicTacToe,
   board: TicTacToeBoard,
-multiplayer: SocketIO({ server: 'https://bg-tutorial.upd.railway.app' }),
+multiplayer: SocketIO({ server: 'https://bg-tutorial.up.railway.app' }),
 });
 
 const App = () => (
