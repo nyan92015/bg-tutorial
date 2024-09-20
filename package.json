@@ -19,8 +19,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "serve": "node -r esm src/server.js",
-    "deploy": "gh-pages -d build"
+    "serve": "node -r esm src/server.js"
   },
   "eslintConfig": {
     "extends": [
@@ -39,6 +38,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "homepage": "https://nyan92015.github.io/bg-tutorial/"
+  }
 }
