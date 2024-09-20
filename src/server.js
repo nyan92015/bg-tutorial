@@ -7,7 +7,7 @@ import { TicTacToe } from './Game';
 
 const server = Server({ 
     games: [TicTacToe],
-    origins: ['https://bg-tutorial.onrender.com/'] 
+    origins: ['https://bg-tutorial.onrender.com'] 
 });
 const PORT = process.env.PORT || 8000;
 
