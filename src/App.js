@@ -1,20 +1,14 @@
 import React from 'react';
-import { Client } from 'boardgame.io/react';
-import { TicTacToe } from './Game';
+import { Lobby } from 'boardgame.io/react';
 import { TicTacToeBoard } from './Board';
-import { SocketIO } from 'boardgame.io/multiplayer'
+import { TicTacToe } from './Game';
 
-const TicTacToeClient = Client({
-  game: TicTacToe,
-  board: TicTacToeBoard,
-  multiplayer: SocketIO({ server: 'localhost:8000' }),
-});
+const server = `https://yourapplication.herokuapp.com`;
+const importedGames = [{ game: TicTacToe, board: TicTacToeBoard }];
 
-const App = () => (
+export default () => (
   <div>
-    <TicTacToeClient playerID="0" />
-    <TicTacToeClient playerID="1" />
+    <h1>Lobby</h1>
+    <Lobby gameServer={server} lobbyServer={server} gameComponents={importedGames} />
   </div>
 );
-
-export default App;

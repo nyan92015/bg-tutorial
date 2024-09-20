@@ -1,18 +1,22 @@
-const { Server, Origins } = require('boardgame.io/server');
+// server.js
 
-const server = Server({
-  // Provide the definitions for your game(s).
-  games: [TicTacToe],
+import { Server } from 'boardgame.io/server';
+import path from 'path';
+import serve from 'koa-static';
+import { TicTacToe } from './Game';
 
-  // Provide the database storage class to use.
-  db: new DbConnector(),
+const server = Server({ games: [TicTacToe] });
+const PORT = process.env.PORT || 8000;
 
-  origins: [
-    // Allow your game site to connect.
-    'https://bg-tutorial-3nouersax-nyan92015s-projects.vercel.app',
-    // Allow localhost to connect, except when NODE_ENV is 'production'.
-    Origins.LOCALHOST_IN_DEVELOPMENT
-  ],
+// Build path relative to the server.js file
+const frontEndAppBuildPath = path.resolve(__dirname, './build');
+server.app.use(serve(frontEndAppBuildPath))
+
+server.run(PORT, () => {
+  server.app.use(
+    async (ctx, next) => await serve(frontEndAppBuildPath)(
+      Object.assign(ctx, { path: 'index.html' }),
+      next
+    )
+  )
 });
-
-server.run(8000);
