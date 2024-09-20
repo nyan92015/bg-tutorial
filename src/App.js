@@ -3,7 +3,7 @@ import { Lobby } from 'boardgame.io/react';
 import { TicTacToeBoard } from './Board';
 import { TicTacToe } from './Game';
 
-const server = `https://yourapplication.herokuapp.com`;
+const server = `bg-tutorial.railway.internal`;
 const importedGames = [{ game: TicTacToe, board: TicTacToeBoard }];
 
 export default () => (
