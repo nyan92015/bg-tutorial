@@ -1,7 +1,7 @@
 import React from 'react';
 import { TicTacToe } from './Game';
 import { TicTacToeBoard } from './Board';
-
+import { Lobby } from 'boardgame.io/react';
 
 const App = () => (
  <Lobby
