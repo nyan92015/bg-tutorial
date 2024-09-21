@@ -1,16 +1,20 @@
 import React from 'react';
+import { Client } from 'boardgame.io/react';
+import { SocketIO } from 'boardgame.io/multiplayer'
 import { TicTacToe } from './Game';
 import { TicTacToeBoard } from './Board';
-import { Lobby } from 'boardgame.io/react';
+
+const TicTacToeClient = Client({
+  game: TicTacToe,
+  board: TicTacToeBoard,
+multiplayer: SocketIO({ server: 'https://redout.onrender.com' }),
+});
 
 const App = () => (
- <Lobby
-  gameServer={`https://bg-tutorial.onrender.com`}
-  lobbyServer={`https://bg-tutorial.onrender.com`}
-  gameComponents={[
-    { game: TicTacToe, board: TicTacToeBoard }
-  ]}
-/>
+  <div>
+ <TicTacToeClient playerID="0" />
+ <TicTacToeClient playerID="1" />
+  </div>
 );
 
 export default App;
